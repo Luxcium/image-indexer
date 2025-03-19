@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="2" failures="2" errors="0" time="3.547">
+  <testsuite name="Image Search Engine" errors="0" failures="2" skipped="0" timestamp="2025-03-19T20:20:19" time="3.466" tests="2">
+    <testcase classname="Image Search Engine should initialize successfully" name="Image Search Engine should initialize successfully" time="0.001">
+      <failure>WeaviateStartUpError: Weaviate startup failed with message: Weaviate failed to startup with message: fetch failed
+    at /projects/incubator/image-indexer/node_modules/weaviate-client/dist/node/cjs/connection/helpers.js:120:11
+    at Object.createWeaviateClient (/projects/incubator/image-indexer/src/config/weaviate.ts:51:10)
+    at SearchService.initialize (/projects/incubator/image-indexer/src/services/searchService.ts:22:21)
+    at ImageSearchEngine.initialize (/projects/incubator/image-indexer/src/index.ts:12:7)
+    at Object.&lt;anonymous&gt; (/projects/incubator/image-indexer/test/test.ts:15:5)</failure>
+    </testcase>
+    <testcase classname="Image Search Engine should return image count" name="Image Search Engine should return image count" time="0">
+      <failure>WeaviateStartUpError: Weaviate startup failed with message: Weaviate failed to startup with message: fetch failed
+    at /projects/incubator/image-indexer/node_modules/weaviate-client/dist/node/cjs/connection/helpers.js:120:11
+    at Object.createWeaviateClient (/projects/incubator/image-indexer/src/config/weaviate.ts:51:10)
+    at SearchService.initialize (/projects/incubator/image-indexer/src/services/searchService.ts:22:21)
+    at ImageSearchEngine.initialize (/projects/incubator/image-indexer/src/index.ts:12:7)
+    at Object.&lt;anonymous&gt; (/projects/incubator/image-indexer/test/test.ts:15:5)</failure>
+    </testcase>
+    <testcase classname=" Test execution failure: could be caused by test hooks like &apos;afterAll&apos;." name=" Test execution failure: could be caused by test hooks like &apos;afterAll&apos;." time="0">
+      <failure>{&quot;message&quot;:&quot;&quot;,&quot;stack&quot;:&quot;WeaviateStartUpError: Weaviate startup failed with message: Weaviate failed to startup with message: fetch failed\n    at /projects/incubator/image-indexer/node_modules/weaviate-client/dist/node/cjs/connection/helpers.js:120:11\n    at Object.createWeaviateClient (/projects/incubator/image-indexer/src/config/weaviate.ts:51:10)\n    at SearchService.initialize (/projects/incubator/image-indexer/src/services/searchService.ts:22:21)&quot;}</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
