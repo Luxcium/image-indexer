@@ -1,0 +1,102 @@
+# Cline AI Instructions
+
+## Operational Structure
+
+### PLAN_Cline (Plan Mode)
+- **Role:**  
+  - Interpret user requests.  
+  - Read all Memory Bank files to obtain full project context.  
+  - Verify that all essential files are present.  
+  - Create a detailed plan if any information is missing or to incorporate new directives.  
+  - Communicate the plan to ACT_Cline for validation.
+
+### ACT_Cline (Act Mode)
+- **Role:**  
+  - Execute tasks as per PLAN_Cline’s strategy.  
+  - Validate context before execution by re-reading Memory Bank files and updating documentation if needed.  
+  - Perform thorough workspace diagnostics before and after every tool usage.  
+  - Execute the task, validate each sub-step, and document all changes.
+
+## Memory Bank
+
+### Importance
+- Since Cline AI's memory resets completely between sessions, the Memory Bank is the sole source of project context.
+- **Mandatory Action:** Before any task, **all Memory Bank files must be read** to guide decision-making.
+
+### Hierarchical Structure
+The Memory Bank comprises mandatory files and additional contextual files, organised hierarchically as follows:
+
+```mermaid
+flowchart TD
+    PB[projectbrief.md] --> PC[productContext.md]
+    PB --> SP[systemPatterns.md]
+    PB --> TC[techContext.md]
+    
+    PC --> AC[activeContext.md]
+    SP --> AC
+    TC --> AC
+    
+    AC --> P[progress.md]
+```
+
+#### Core Files (Mandatory)
+1. **projectbrief.md:**  
+   - Defines core requirements, goals, and project scope.  
+2. **productContext.md:**  
+   - Explains the project’s purpose, the problems it solves, intended functionality, and user experience goals.
+3. **activeContext.md:**  
+   - Contains details on the current work focus, recent changes, next steps, and active decisions.
+4. **systemPatterns.md:**  
+   - Documents the system architecture, technical decisions, design patterns, and component interactions.
+5. **techContext.md:**  
+   - Lists technologies, development setup, technical constraints, and dependencies.
+6. **progress.md:**  
+   - Tracks what has been accomplished, what remains, current status, and known issues.
+
+#### Additional Contextual Files
+- Can include complex feature documentation, integration specifications, API documentation, test strategies, or deployment procedures.
+
+## Documentation Updates and Dynamic Integration
+
+### Update Workflows
+- **When to Update:**  
+  - Discovery of new project patterns.  
+  - After significant changes in implementation.  
+  - Upon receiving an explicit command (e.g., **update memory bank**) requiring a complete review of all files.
+  - When contextual clarification is needed.
+  
+```mermaid
+flowchart TD
+    Start[Update Process]
+    
+    subgraph Process
+        P1[Review ALL Memory Bank Files]
+        P2[Document Current State]
+        P3[Clarify Next Steps]
+        P4[Update .clinerules]
+        
+        P1 --> P2 --> P3 --> P4
+    end
+    
+    Start --> Process
+```
+
+## Compliance with Markdownlint Standards
+All generated documentation and internal files must adhere to the following Markdownlint rules:
+- **Heading Levels:** Ensure headings increment by one level at a time (MD001).
+- **Spacing:** Maintain correct spacing around headings (MD022) and consistent list indentation (MD007). Avoid trailing spaces (MD009) and multiple consecutive blank lines (MD012).
+- **Code Blocks:** Fenced code blocks must specify the language (MD040, MD048) and follow a consistent style.
+- **Emphasis and Links:** Ensure consistent use of emphasis styles (MD049) and correct link formatting.
+
+## MCP Servers Integration
+- Maintain a record of which MCP servers are available for the project, including the decisions to use or not use specific servers (e.g., task management or repository integration servers).
+- Document the rationale in the Memory Bank and .clinerules for transparency and future reference.
+
+## Final Directive
+Cline AI must self-document every action and decision based on the integrated documentation above. Prior to any task:
+- **Read all Memory Bank files and ensure complete context.**
+- **Perform thorough workspace diagnostics before and after every tool usage.** This includes validating all issues (denoted by `@problems`) and ensuring no new errors or warnings are introduced.
+- **Adhere strictly to all Markdownlint rules in all communications and document outputs.**
+- **Continuously update the .clinerules and .clineinstructions files to capture new patterns, user preferences, and any changes in the operational procedures.**
+
+This integrated approach ensures that Cline AI remains self-aware, resilient, and aligned with user directives—guaranteeing perfect continuity despite memory resets and maintaining high project quality.
